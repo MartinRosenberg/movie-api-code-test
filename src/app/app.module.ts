@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm"
 
 import { AppController } from "./app.controller"
 import { AppService } from "./app.service"
+import { ConfigurationModule } from "../configuration/configuration.module"
 import { Movie } from "../movies/movie.entity"
 import { MoviesModule } from "../movies/movies.module"
 import { Rating } from "../ratings/rating.entity"
@@ -10,6 +11,7 @@ import { RatingsModule } from "../ratings/ratings.module"
 
 @Module({
 	imports: [
+		ConfigurationModule,
 		MoviesModule,
 		RatingsModule,
 		TypeOrmModule.forRoot({

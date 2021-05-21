@@ -4,6 +4,7 @@
 
 ```bash
 yarn
+cp .env.sample .env
 ```
 
 ## Run
@@ -19,17 +20,30 @@ yarn start:dev
 yarn start:prod
 ```
 
-## Test
+## Use
 
 ```bash
-# unit tests
-$ yarn test
+# Get one movie by movieId
+curl http://localhost:8000/movies/195
 
-# e2e tests
-$ yarn test:e2e
+# List all movies, 50 at a time
+curl http://localhost:8000/movies
 
-# test coverage
-$ yarn test:cov
+# Get the next page
+curl http://localhost:8000/movies -G -d "page=1"
+curl "http://localhost:8000/movies?page=1"
+
+# Filter by year
+curl http://localhost:8000/movies -G -d "year=1988"
+curl "http://localhost:8000/movies?year=1988"
+
+# Filter by genre
+curl http://localhost:8000/movies -G -d "genre=drama"
+curl "http://localhost:8000/movies?genre=drama"
+
+# All of the above
+curl http://localhost:8000/movies -G -d "year=2001" -d "genre=comedy" -d "page=2"
+curl "http://localhost:8000/movies?year=2001&genre=comedy&page=2"
 ```
 
 ## Prompt

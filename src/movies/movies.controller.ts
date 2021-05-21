@@ -1,4 +1,10 @@
-import { Controller, Get, Param, Query } from "@nestjs/common"
+import {
+	Controller,
+	Get,
+	NotFoundException,
+	Param,
+	Query,
+} from "@nestjs/common"
 import { Movie } from "./movie.entity"
 
 import { MoviesService } from "./movies.service"
@@ -7,9 +13,13 @@ import { MoviesService } from "./movies.service"
 export class MoviesController {
 	constructor(private moviesService: MoviesService) {}
 
-	@Get(":id")
-	async findOne(@Param("id") id: number): Promise<Movie | undefined> {
-		return this.moviesService.findOne(id)
+	@Get(":movieId")
+	async findOne(@Param("movieId") movieId: number): Promise<Movie> {
+		const res = await this.moviesService.findOne(movieId)
+		if (res == null) {
+			throw new NotFoundException("No movie was found with that ID.")
+		}
+		return res
 	}
 
 	@Get()

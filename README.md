@@ -1,73 +1,106 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Movie API Code Test
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Install
 
 ```bash
-$ npm install
+yarn
 ```
 
-## Running the app
+## Run
 
 ```bash
 # development
-$ npm run start
+yarn start
 
 # watch mode
-$ npm run start:dev
+yarn start:dev
 
 # production mode
-$ npm run start:prod
+yarn start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 
-## Support
+## Prompt
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Prerequisites
 
-## Stay in touch
+-   An IDE or text editor of your choice
+-   [Sqlite3](http://www.sqlitetutorial.net/)
 
--   Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
--   Website - [https://nestjs.com](https://nestjs.com/)
--   Twitter - [@nestframework](https://twitter.com/nestframework)
+### Task
 
-## License
+Your task is to create an API on top of a couple different databases. It should conform to the user stories provided below. You are free to use whatever language you prefer, however our tech stack features NodeJS, Java and Ruby. If you're comfortable with any of these, try to favor them. Google and the interwebs are at your disposal.
 
-Nest is [MIT licensed](LICENSE).
+### The Databases
+
+The databases are provided as a SQLite3 database in `db/`. It does not require any credentials to login. You can run SQL queries directly against the database using:
+
+```
+sqlite <path to db file>
+```
+
+`.tables` will return a list of available tables and `.schema <table>` will provide the schema.
+
+### Considerations
+
+When developing your solution, please consider the following:
+
+-   Structure of your endpoints - Can you easily extend the API to support new endpoints as feature requests come in?
+-   Quality of your code - Does your code demonstrate the use of design patterns?
+-   Testability - Is your code testable?
+-   Can your solution be easily configured and deployed? Consider guidelines from [12 Factor App](http://12factor.net/)
+
+### User Stories
+
+#### List All Movies
+
+AC:
+
+-   An endpoint exists that lists all movies
+-   List is paginated: 50 movies per page, the page can be altered with the `page` query params
+-   Columns should include: imdb id, title, genres, release date, budget
+-   Budget is displayed in dollars
+
+#### Movie Details
+
+AC:
+
+-   An endpoint exists that lists the movie details for a particular movie
+-   Details should include: imdb id, title, description, release date, budget, runtime, average rating, genres, original language, production companies
+-   Budget should be displayed in dollars
+-   Ratings are pulled from the rating database
+
+#### Movies By Year
+
+AC:
+
+-   An endpoint exists that will list all movies from a particular year
+-   List is paginated: 50 movies per page, the page can be altered with the `page` query params
+-   List is sorted by date in chronological order
+-   Sort order can be descending
+-   Columns include: imdb id, title, genres, release date, budget
+
+#### Movies By Genre
+
+AC:
+
+-   An endpoint exists that will list all movies by a genre
+-   List is paginated: 50 movies per page, the page can be altered with the `page` query params
+-   Columns include: imdb id, title, genres, release date, budget
+
+### Tips
+
+-   This is a test of your abilities and not how fast you can crank through random stories. As such, it is more important to produce well structured code that meets the criteria in the user stories rather than getting all stories done.
+-   If you get stuck, please ask someone. We want to know how you work both as an individual and as part of a team. You will not lose points for asking for help on something that is unclear or where you are stuck.

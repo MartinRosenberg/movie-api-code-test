@@ -7,7 +7,7 @@ export class MoviesController {
 	constructor(private moviesService: MoviesService) {}
 
 	@Get(":id")
-	async findOne(@Param("id") id: string): Promise<unknown> {
+	async findOne(@Param("id") id: number): Promise<unknown> {
 		return this.moviesService.findOne(id)
 	}
 
